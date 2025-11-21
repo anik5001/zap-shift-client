@@ -17,7 +17,6 @@ const Bands = () => {
       centeredSlides={true}
       spaceBetween={30}
       grabCursor={true}
-      loop={true}
       modules={[Autoplay]}
       autoplay={{
         delay: 1000,
