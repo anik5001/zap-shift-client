@@ -15,22 +15,22 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <NavLink>Services</NavLink>
+        <NavLink to="/">Services</NavLink>
       </li>
       <li>
         <NavLink to="/coverage">Coverage</NavLink>
       </li>
       <li>
-        <NavLink>About Us</NavLink>
+        <NavLink to="/">About Us</NavLink>
       </li>
       <li>
-        <NavLink>Pricing</NavLink>
+        <NavLink to="/">Pricing</NavLink>
       </li>
       <li>
-        <NavLink>Blog</NavLink>
+        <NavLink to="/">Blog</NavLink>
       </li>
       <li>
-        <NavLink>Contact</NavLink>
+        <NavLink to="/">Contact</NavLink>
       </li>
     </>
   );
@@ -70,19 +70,22 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       {user ? (
-        <button onClick={handleSignOut} className="btn">
+        <button onClick={handleSignOut} className="btn mx-4">
           Logout
         </button>
       ) : (
         <div className="navbar-end">
-          <Link to="/login" className="btn">
+          <Link to="/login" className="btn ">
             Sign In
           </Link>
-          <Link to="/register" className="btn hover:bg-[#CAEB66]">
+          <Link to="/register" className="btn hover:bg-[#CAEB66] mx-4">
             Sign Up
           </Link>
         </div>
       )}
+      <Link to="/beARider" className="btn btn-primary text-black">
+        Be a Rider
+      </Link>
     </div>
   );
 };
