@@ -1,11 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../../Hooks/useAuth";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import axios from "axios";
 
 const Register = () => {
   const { createUser, updateProfileUser } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -39,6 +41,7 @@ const Register = () => {
             updateProfileUser(userProfile)
               .then(() => {
                 console.log("success full update profile");
+                navigate(location?.state || "/");
               })
               .catch((err) => {
                 console.log(err);

@@ -13,10 +13,10 @@ import {
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  console.log(user);
-  const [loading, setLoading] = useState(false);
-  const googleProvider = new GoogleAuthProvider();
 
+  const [loading, setLoading] = useState(true);
+  const googleProvider = new GoogleAuthProvider();
+  console.log(user, loading);
   const googleSignUser = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
@@ -41,6 +41,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setLoading(false);
     });
     return () => unSubscribe();
   }, []);

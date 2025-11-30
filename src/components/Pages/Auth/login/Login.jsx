@@ -1,10 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../../../../Hooks/useAuth";
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { signinUser, googleSignUser } = useAuth();
   const {
     register,
@@ -17,7 +18,7 @@ const Login = () => {
     signinUser(data.email, data.password)
       .then((result) => {
         console.log(result);
-        navigate("/");
+        navigate(location?.state, "/");
       })
       .catch((e) => {
         console.log(e.message);
@@ -27,7 +28,7 @@ const Login = () => {
     googleSignUser()
       .then((result) => {
         console.log(result.user);
-        navigate("/");
+        navigate(location?.state, "/");
       })
       .catch((err) => {
         console.log(err);
@@ -99,7 +100,11 @@ const Login = () => {
           </button>
           <p>
             Don't have an account?
-            <Link to="/register" className="text-blue-500 hover:underline">
+            <Link
+              state={location?.state}
+              to="/register"
+              className="text-blue-500 hover:underline"
+            >
               Register
             </Link>
           </p>
